@@ -7,7 +7,7 @@ Created on Wed Mar 24 10:14:34 2021
 """
 #新增篩選功能
 #字數篩選
-#特徵篩選
+#特徵篩選>>清單快寫法
 
 data = []
 
@@ -26,11 +26,8 @@ for base in data:
     if len(base) < 100:
         new.append(base)
 
-#特徵篩選
-good = []
-for base in data:
-    if 'good' in base:
-        good.append(base)
+#特徵篩選>>清單快寫法
+good = [base for base in data if 'good' in base]
 
 
 print('總留言字數：', total_len)
