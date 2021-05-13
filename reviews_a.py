@@ -8,6 +8,7 @@ Created on Wed Mar 24 10:14:34 2021
 #新增篩選功能
 #字數篩選
 #特徵篩選>>清單快寫法
+#新增字典查詢
 
 data = []
 
@@ -35,3 +36,34 @@ print('留言總數：', len(data))
 print('平均留言個數：', total_len / len(data))
 print('留言字數小於一百字：', len(new), '筆')
 print('留言中包含good之數量：', len(good), '筆')
+
+#文字查詢
+wc = {} # word count
+for d in data:
+    words = d.split()
+    for word in words:
+        if word in wc:
+            wc[word] += 1
+        else:
+            wc[word] = 1
+
+for word in wc:
+    if wc[word] >= 1000000:
+        print(word, wc[word])
+
+print(len(wc))
+
+while True:
+    user_input = input('請問想查詢什麼字？')
+    if user_input == 'q':
+        print('離開查詢')
+        break
+    if user_input in wc:
+        print(user_input, '出現過次數為：', wc[user_input])
+    else:
+        print('查無此')
+
+
+
+
+
